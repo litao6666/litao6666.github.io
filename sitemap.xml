@@ -101,14 +101,7 @@
 
   
   <url>
-    <loc>https://litao6666.github.io/tags/ecc/</loc>
-    <lastmod>2022-10-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://litao6666.github.io/tags/Modulus-Fault-Attack/</loc>
+    <loc>https://litao6666.github.io/tags/blockchain-intro/</loc>
     <lastmod>2022-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -123,13 +116,6 @@
   
   <url>
     <loc>https://litao6666.github.io/tags/HE/</loc>
-    <lastmod>2022-10-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://litao6666.github.io/tags/blockchain-intro/</loc>
     <lastmod>2022-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -151,6 +137,20 @@
   
   <url>
     <loc>https://litao6666.github.io/tags/parity-oracle/</loc>
+    <lastmod>2022-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://litao6666.github.io/tags/ecc/</loc>
+    <lastmod>2022-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://litao6666.github.io/tags/Modulus-Fault-Attack/</loc>
     <lastmod>2022-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -215,13 +215,6 @@
 
   
   <url>
-    <loc>https://litao6666.github.io/categories/Crypto/</loc>
-    <lastmod>2022-10-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://litao6666.github.io/categories/Blockchain/</loc>
     <lastmod>2022-10-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -229,14 +222,14 @@
   </url>
   
   <url>
-    <loc>https://litao6666.github.io/categories/Crypto/2022%E5%B7%85%E5%B3%B0%E6%9E%81%E5%AE%A2/</loc>
+    <loc>https://litao6666.github.io/categories/Crypto/</loc>
     <lastmod>2022-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://litao6666.github.io/categories/Crypto/ctfshow/</loc>
+    <loc>https://litao6666.github.io/categories/Blockchain/NewStarCTF/</loc>
     <lastmod>2022-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -257,14 +250,21 @@
   </url>
   
   <url>
-    <loc>https://litao6666.github.io/categories/Crypto/MTCTF/</loc>
+    <loc>https://litao6666.github.io/categories/Crypto/ctfshow/</loc>
     <lastmod>2022-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://litao6666.github.io/categories/Blockchain/NewStarCTF/</loc>
+    <loc>https://litao6666.github.io/categories/Crypto/2022%E5%B7%85%E5%B3%B0%E6%9E%81%E5%AE%A2/</loc>
+    <lastmod>2022-10-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://litao6666.github.io/categories/Crypto/MTCTF/</loc>
     <lastmod>2022-10-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

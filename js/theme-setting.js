@@ -11,6 +11,7 @@ function isNightFun() {
         } else {
             isNightTemp = 'false';
         }
+		isNightTemp = 'false';
         localStorage.setExpire('night', isNightTemp, expireTime1H);
     }
     return isNightTemp;

